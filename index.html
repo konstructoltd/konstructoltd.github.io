@@ -15,21 +15,22 @@
         }
 
         :root {
-            --primary-blue: #0b509b;      /* your logo blue */
+            --primary-blue: #0b509b;        /* your logo blue */
             --dark-blue: #052140;
-            --accent-wood: #d4a373;        /* warm wood */
-            --bg-dark: #121212;             /* main background */
-            --bg-card: #1e1e1e;             /* card / surface background */
-            --text-light: #e0e0e0;           /* primary text */
-            --text-muted: #a0a0a0;            /* secondary text */
-            --border-color: #2a2a2a;
-            --glass-bg: rgba(255, 255, 255, 0.05);
+            --accent-wood: #d4a373;          /* warm wood */
+            --bg-light: #f4f7fb;              /* soft blue‑grey background */
+            --card-white: #ffffff;             /* clean white for cards */
+            --text-dark: #1e2b3a;               /* dark blue‑grey for text */
+            --text-muted: #4a5a6e;               /* softer dark for secondary text */
+            --border-light: #d9e2ef;            /* light blue‑grey border */
+            --shadow-sm: 0 4px 12px rgba(0, 30, 60, 0.05);
+            --shadow-hover: 0 12px 24px rgba(0, 40, 80, 0.1);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
             scroll-behavior: smooth;
         }
@@ -42,11 +43,12 @@
 
         /* --- Header & Navigation --- */
         header {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-color);
+            background-color: var(--card-white);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
         }
 
         nav {
@@ -62,7 +64,6 @@
             height: 70px;
             width: auto;
             display: block;
-            filter: brightness(1.1);
         }
 
         .nav-links {
@@ -73,20 +74,20 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-light);
+            color: var(--text-dark);
             font-weight: 600;
             font-size: 0.95rem;
             transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--accent-wood);
+            color: var(--primary-blue);
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--accent-wood);
-            color: #121212; /* dark text for contrast on wood */
+            background-color: var(--primary-blue);
+            color: white;
             font-weight: 700;
             padding: 0.8rem 2rem;
             border-radius: 40px;
@@ -95,12 +96,13 @@
             border: none;
             cursor: pointer;
             font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
         }
 
         .btn:hover {
-            background-color: #c38e5a;
+            background-color: var(--dark-blue);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-hover);
         }
 
         /* --- Mobile Call Bar --- */
@@ -122,9 +124,9 @@
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(150deg, #0a1a2f 0%, #030b14 100%);
+            background: linear-gradient(150deg, #0b509b 0%, #052140 100%);
             padding: 6rem 0;
-            border-bottom: 1px solid var(--border-color);
+            color: white;
         }
 
         .hero .container {
@@ -145,14 +147,14 @@
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            color: #b0b0b0;
+            opacity: 0.9;
             max-width: 500px;
         }
 
         .hero-image-card {
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 30px;
             padding: 3rem 2rem;
             text-align: center;
@@ -165,7 +167,7 @@
         }
 
         .hero-image-card p {
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.9);
             font-size: 1rem;
         }
 
@@ -177,13 +179,12 @@
             font-size: 0.75rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            color: #121212;
+            color: #1e2b3a;
         }
 
         /* --- Sections --- */
         .section {
             padding: 5rem 0;
-            border-bottom: 1px solid var(--border-color);
         }
 
         .section-title {
@@ -193,7 +194,7 @@
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: white;
+            color: var(--primary-blue);
             font-weight: 700;
         }
 
@@ -210,15 +211,17 @@
         }
 
         .service-card {
-            background: var(--bg-card);
+            background: var(--card-white);
             padding: 2.5rem 2rem;
             border-radius: 20px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: 0.2s;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
             border-color: var(--primary-blue);
         }
 
@@ -231,6 +234,7 @@
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--text-dark);
         }
 
         .service-card p {
@@ -245,15 +249,18 @@
         }
 
         .project-item {
-            background: var(--bg-card);
+            background: var(--card-white);
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
             transition: 0.2s;
         }
 
         .project-item:hover {
-            border-color: var(--accent-wood);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-blue);
         }
 
         .project-item img {
@@ -270,6 +277,7 @@
         .project-info h3 {
             margin-bottom: 0.5rem;
             font-size: 1.3rem;
+            color: var(--text-dark);
         }
 
         .project-info p {
@@ -303,7 +311,7 @@
         .stat .number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--accent-wood);
+            color: var(--primary-blue);
         }
 
         .stat .label {
@@ -314,7 +322,8 @@
         .about-image img {
             width: 100%;
             border-radius: 20px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
         }
 
         /* --- Contact Section --- */
@@ -322,15 +331,17 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            background: var(--bg-card);
+            background: var(--card-white);
             border-radius: 30px;
             padding: 3rem;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
         }
 
         .contact-info h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
+            color: var(--primary-blue);
         }
 
         .contact-info p {
@@ -347,7 +358,7 @@
 
         .contact-detail i {
             font-size: 1.5rem;
-            color: var(--accent-wood);
+            color: var(--primary-blue);
             width: 2rem;
         }
 
@@ -359,10 +370,10 @@
         .contact-form textarea {
             width: 100%;
             padding: 1rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border-color);
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
             border-radius: 12px;
-            color: var(--text-light);
+            color: var(--text-dark);
             font-family: inherit;
             font-size: 1rem;
         }
@@ -371,6 +382,7 @@
         .contact-form textarea:focus {
             outline: none;
             border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(11, 80, 155, 0.1);
         }
 
         .contact-form textarea {
@@ -390,7 +402,8 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-light);
+            background-color: var(--card-white);
         }
 
         /* --- Responsive --- */
@@ -514,28 +527,28 @@
             </div>
             <div class="projects-grid">
                 <div class="project-item">
-                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/Hgp1cemJBV0W8QKUF9B7" alt="Project 1">
+                    <img src="https://picsum.photos/400/300?random=1" alt="Project 1">
                     <div class="project-info">
                         <h3>Oak Kitchen</h3>
                         <p>Hand‑crafted shaker style kitchen in solid oak.</p>
                     </div>
                 </div>
                 <div class="project-item">
-                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/P3YLx3U2NWQ9s0LzO5P8" alt="Project 2">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Project 2">
                     <div class="project-info">
                         <h3>Staircase Refurb</h3>
                         <p>Victorian staircase with new spindles and handrail.</p>
                     </div>
                 </div>
                 <div class="project-item">
-                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/sLRLqeAK4ztWEl39JSf5" alt="Project 3">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Project 3">
                     <div class="project-info">
                         <h3>Bi‑fold Doors</h3>
                         <p>Custom made oak bi‑folds leading to garden.</p>
                     </div>
                 </div>
                 <div class="project-item">
-                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/Mxw9CTr8AKc0LScAWV01" alt="Project 4">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Project 4">
                     <div class="project-info">
                         <h3>Built‑in Wardrobes</h3>
                         <p>Fitted bedroom wardrobes with soft‑close drawers.</p>
@@ -572,7 +585,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="hhttps://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/Arq158Qhfc637HIvEoW9" alt="Carpenter at work">
+                    <img src="https://picsum.photos/500/400?random=5" alt="Carpenter at work">
                 </div>
             </div>
         </div>
@@ -591,11 +604,11 @@
                     <p>Whether you have a specific project in mind or just want to discuss ideas, we’re here to help.</p>
                     <div class="contact-detail">
                         <i class="fas fa-phone-alt"></i>
-                        <span>+447413437908</span>
+                        <span>07413 437908</span>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-envelope"></i>
-                        <span>konstructo.ltd@gmail.com</span>
+                        <span>info@konstructo.co.uk</span>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-map-marker-alt"></i>
