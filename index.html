@@ -4,31 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konstructo | Expert Carpentry & Joinery</title>
+    <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-blue: #0b509b;    /* Your Logo Blue */
-            --dark-blue: #052140;
-            --accent-wood: #d4a373;     /* Sophisticated Wood Accent */
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --white: #ffffff;
-            --gray-light: #f8fafc;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-blue: #0b509b;      /* your logo blue */
+            --dark-blue: #052140;
+            --accent-wood: #d4a373;        /* warm wood */
+            --bg-dark: #121212;             /* main background */
+            --bg-card: #1e1e1e;             /* card / surface background */
+            --text-light: #e0e0e0;           /* primary text */
+            --text-muted: #a0a0a0;            /* secondary text */
+            --border-color: #2a2a2a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+        }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--white);
-            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -39,8 +42,8 @@
 
         /* --- Header & Navigation --- */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -56,21 +59,72 @@
         }
 
         .logo-img {
-            height: 80px; 
+            height: 70px;
             width: auto;
             display: block;
+            filter: brightness(1.1);
         }
 
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
 
-        /* --- Hero Section (Professional Design) --- */
-        .hero {
-            background: linear-gradient(150deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-wood);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-wood);
+            color: #121212; /* dark text for contrast on wood */
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: #c38e5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* --- Mobile Call Bar --- */
+        .mobile-call-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary-blue);
             color: white;
-            padding: 7rem 0;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
+            padding: 1rem;
+            font-weight: 800;
+            text-decoration: none;
+            z-index: 9999;
+            font-size: 1.1rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(150deg, #0a1a2f 0%, #030b14 100%);
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hero .container {
@@ -81,155 +135,500 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
+            font-size: 3.2rem;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
             font-weight: 800;
             color: white;
         }
 
         .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
             max-width: 500px;
         }
 
-        /* Professional Glass Cards */
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
         .hero-image-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 3rem 2rem;
             text-align: center;
         }
 
         .hero-image-card i {
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: var(--accent-wood);
             margin-bottom: 1rem;
         }
 
-        /* --- Buttons --- */
-        .btn {
+        .hero-image-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .established {
+            background: var(--accent-wood);
             display: inline-block;
-            background-color: var(--accent-wood);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #121212;
+        }
+
+        /* --- Sections --- */
+        .section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
             color: white;
             font-weight: 700;
-            padding: 1.1rem 2.2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            text-align: center;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            filter: brightness(1.1);
+        .section-title p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
         }
 
-        /* --- Mobile Call Button --- */
-        .mobile-call-bar {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--primary-blue);
-            color: white;
-            text-align: center;
-            padding: 1.2rem;
-            font-weight: 800;
-            text-decoration: none;
-            z-index: 9999;
-        }
-
-        /* --- Services Section --- */
-        .section { padding: 6rem 0; }
-        .section-title { text-align: center; margin-bottom: 4rem; }
-        .section-title h2 { font-size: 2.5rem; color: var(--primary-blue); }
-
+        /* --- Services Grid --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
         .service-card {
-            background: white;
-            padding: 3rem 2rem;
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
             border-radius: 20px;
-            border: 1px solid #edf2f7;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
         }
 
-        .service-icon { font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 1.5rem; }
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+        }
+
+        /* --- Projects Gallery --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-item {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: 0.2s;
+        }
+
+        .project-item:hover {
+            border-color: var(--accent-wood);
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-wood);
+        }
+
+        .stat .label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
 
         /* --- Contact Section --- */
-        .contact-box {
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--bg-card);
             border-radius: 30px;
-            padding: 5rem 2rem;
-            text-align: center;
-            color: white;
+            padding: 3rem;
+            border: 1px solid var(--border-color);
         }
 
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            font-size: 0.9rem;
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
             color: var(--text-muted);
-            border-top: 1px solid #eee;
+            margin-bottom: 2rem;
         }
 
-        /* --- Responsive Design --- */
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: var(--accent-wood);
+            width: 2rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- Responsive --- */
         @media (max-width: 900px) {
-            .hero .container { grid-template-columns: 1fr; text-align: center; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content p { margin: 0 auto 2rem; }
-            .nav-links { display: none; }
-            .mobile-call-bar { display: block; }
-            body { padding-bottom: 60px; }
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-content p {
+                margin: 0 auto 2rem;
+            }
+            .nav-links {
+                display: none; /* For simplicity, hide on mobile. You could add a hamburger later. */
+            }
+            .mobile-call-bar {
+                display: block;
+            }
+            body {
+                padding-bottom: 70px;
+            }
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
         }
     </style>
 </head>
 <body>
 
+<!-- Mobile Call Bar -->
 <a href="tel:+447413437908" class="mobile-call-bar">
     <i class="fas fa-phone-alt"></i> TAP TO CALL: 07413 437908
 </a>
 
+<!-- Header -->
 <header>
     <nav>
-        <a href="index.html">
+        <a href="#">
             <img src="logo.jpg" alt="Konstructo Logo" class="logo-img">
         </a>
         <div class="nav-links">
             <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
             <a href="#about">About</a>
-            <a href="#contact" class="btn" style="padding: 0.7rem 1.5rem; font-size: 0.8rem;">GET A QUOTE</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="btn">GET A QUOTE</a>
         </div>
     </nav>
 </header>
 
 <main>
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div style="background:var(--accent-wood); display:inline-block; padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; margin-bottom: 1rem;">ESTD 2023</div>
-                <h1>Crafting Excellence
+                <span class="established">ESTD 2023</span>
+                <h1>Crafting Excellence in Wood</h1>
+                <p>Bespoke carpentry and joinery for homes and businesses. Quality you can see and feel.</p>
+                <a href="#contact" class="btn">REQUEST A CALLBACK</a>
+            </div>
+            <div class="hero-image-card">
+                <i class="fas fa-tools"></i>
+                <p>Over 20 years of combined experience</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">Fully insured • Free estimates</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>What we can do for you</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-door-open"></i></div>
+                    <h3>Doors & Windows</h3>
+                    <p>Custom timber doors, sash windows, and french doors made to measure.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-stairs"></i></div>
+                    <h3>Staircases</h3>
+                    <p>New staircases, refurbishments, balustrades and spindles.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chess-board"></i></div>
+                    <h3>Flooring</h3>
+                    <p>Solid wood and engineered flooring, sanding and finishing.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-wardrobe"></i></div>
+                    <h3>Built‑in Furniture</h3>
+                    <p>Wardrobes, shelving, media units – designed for your space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects / Photo Gallery -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Projects</h2>
+                <p>A glimpse of our work</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/Hgp1cemJBV0W8QKUF9B7" alt="Project 1">
+                    <div class="project-info">
+                        <h3>Oak Kitchen</h3>
+                        <p>Hand‑crafted shaker style kitchen in solid oak.</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/P3YLx3U2NWQ9s0LzO5P8" alt="Project 2">
+                    <div class="project-info">
+                        <h3>Staircase Refurb</h3>
+                        <p>Victorian staircase with new spindles and handrail.</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/sLRLqeAK4ztWEl39JSf5" alt="Project 3">
+                    <div class="project-info">
+                        <h3>Bi‑fold Doors</h3>
+                        <p>Custom made oak bi‑folds leading to garden.</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="https://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/Mxw9CTr8AKc0LScAWV01" alt="Project 4">
+                    <div class="project-info">
+                        <h3>Built‑in Wardrobes</h3>
+                        <p>Fitted bedroom wardrobes with soft‑close drawers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Konstructo</h2>
+                <p>Passion for wood, precision in every detail</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded in 2023, Konstructo brings together a team of skilled carpenters with decades of experience in high‑end joinery. We believe that woodworking is both a craft and an art – every piece we create is built to last and designed to impress.</p>
+                    <p>We work closely with homeowners, architects, and designers to bring ideas to life. From traditional bespoke furniture to modern fitted solutions, we take pride in our attention to detail and the quality of materials we use.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="number">50+</div>
+                            <div class="label">Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">5★</div>
+                            <div class="label">Reviews</div>
+                        </div>
+                        <div class="stat">
+                            <div class="number">2023</div>
+                            <div class="label">Established</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="hhttps://www.checkatrade.com/trades/konstructoltd/albums/rPQBr8VMy6y8cXZIfXz0/photos/Arq158Qhfc637HIvEoW9" alt="Carpenter at work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch for a free quote</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let’s work together</h3>
+                    <p>Whether you have a specific project in mind or just want to discuss ideas, we’re here to help.</p>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+447413437908</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <span>konstructo.ltd@gmail.com</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>London & Home Counties</span>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Konstructo. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
