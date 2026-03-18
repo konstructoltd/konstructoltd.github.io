@@ -591,7 +591,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (Updated with Formspree) -->
     <section class="section" id="contact">
         <div class="container">
             <div class="section-title">
@@ -616,19 +616,22 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="#" method="post">
+                    <!-- Formspree form - updated with proper name attributes and endpoint -->
+                    <form action="https://formspree.io/f/mdawygow" method="POST">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <input type="text" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email Address" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Phone Number">
+                            <input type="tel" name="phone" placeholder="Phone Number">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Tell us about your project..." required></textarea>
+                            <textarea name="message" placeholder="Tell us about your project..." required></textarea>
                         </div>
+                        <!-- Optional: hidden field to redirect after submission (replace with your thank-you page URL) -->
+                        <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html"> -->
                         <button type="submit" class="btn">SEND MESSAGE</button>
                     </form>
                 </div>
