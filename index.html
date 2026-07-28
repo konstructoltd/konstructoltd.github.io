@@ -70,13 +70,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem; /* Slightly increased padding for taller logo */
+            padding: 0.75rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .logo-img {
-            height: 90px; /* Increased from 70px to 90px */
+            height: 90px;
             width: auto;
             display: block;
         }
@@ -356,18 +356,20 @@
         /* --- Projects Gallery --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .project-item {
             background: var(--card-white);
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-sm);
             transition: 0.3s;
             position: relative;
+            cursor: pointer;
         }
         .project-item:hover {
             transform: translateY(-5px);
@@ -377,7 +379,7 @@
         .project-item .image-wrapper {
             position: relative;
             overflow: hidden;
-            height: 220px;
+            height: 250px;
         }
         .project-item img {
             width: 100%;
@@ -389,39 +391,193 @@
         .project-item:hover img {
             transform: scale(1.05);
         }
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 80, 155, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: 0.3s;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        .project-item:hover .project-overlay {
-            opacity: 1;
-        }
 
         .project-info {
-            padding: 1.5rem;
+            padding: 1.2rem 1.5rem;
         }
 
         .project-info h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--text-dark);
+            margin-bottom: 0.3rem;
         }
 
         .project-info p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- Full Project Gallery (Overlay) --- */
+        .gallery-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 10000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .gallery-overlay.active {
+            display: block;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .gallery-header h2 {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .gallery-header h2 i {
+            color: var(--accent-wood);
+        }
+
+        .gallery-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .gallery-close:hover {
+            transform: rotate(90deg);
+            color: var(--accent-wood);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            transition: 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1rem 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover .gallery-label {
+            opacity: 1;
+        }
+
+        .gallery-item .gallery-label h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .gallery-item .gallery-label p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10001;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .lightbox-prev {
+            left: 1rem;
+        }
+        .lightbox-next {
+            right: 1rem;
         }
 
         /* --- Why Choose Us --- */
@@ -507,7 +663,6 @@
             color: #2ecc71;
         }
 
-        /* Checkatrade rating box */
         .rating-box {
             background: var(--primary-blue);
             color: white;
@@ -731,6 +886,17 @@
             .about-image {
                 order: -1;
             }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            .gallery-header h2 {
+                font-size: 1.4rem;
+            }
+            .lightbox-prev,
+            .lightbox-next {
+                padding: 0.5rem 0.8rem;
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 500px) {
@@ -741,7 +907,11 @@
                 font-size: 2.4rem;
             }
             .logo-img {
-                height: 70px; /* Slightly smaller on very small screens */
+                height: 70px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 0.8rem;
             }
         }
     </style>
@@ -795,7 +965,7 @@
         </div>
     </section>
 
-    <!-- Services Section (Updated with 18 custom services) -->
+    <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
             <div class="section-title">
@@ -803,109 +973,91 @@
                 <p>What we can do for you</p>
             </div>
             <div class="services-grid">
-                <!-- 1. Doors -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-door-open"></i></div>
                     <h3>Doors</h3>
                     <p>Custom timber doors, including internal, external, and French doors.</p>
                 </div>
-                <!-- 2. Kitchens -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-utensils"></i></div>
                     <h3>Kitchens</h3>
                     <p>Bespoke kitchen fitting, cabinetry, and joinery for a perfect finish.</p>
                 </div>
-                <!-- 3. Stairs -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-stairs"></i></div>
                     <h3>Stairs</h3>
                     <p>New staircases, refurbishments, balustrades, and spindles.</p>
                 </div>
-                <!-- 4. Bespoke built furniture -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-couch"></i></div>
                     <h3>Bespoke Built Furniture</h3>
                     <p>Custom wardrobes, shelving, and furniture tailored to your space.</p>
                 </div>
-                <!-- 5. Oak porches -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-home"></i></div>
                     <h3>Oak Porches</h3>
                     <p>Handcrafted oak porches that add character and curb appeal.</p>
                 </div>
-                <!-- 6. Floors -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-chess-board"></i></div>
                     <h3>Floors</h3>
                     <p>Solid wood and engineered flooring, sanding, and finishing.</p>
                 </div>
-                <!-- 7. Oak garages -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-warehouse"></i></div>
                     <h3>Oak Garages</h3>
                     <p>Beautiful, durable oak garages and carports.</p>
                 </div>
-                <!-- 8. Under stairs storage -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-draw-polygon"></i></div>
                     <h3>Under Stairs Storage</h3>
                     <p>Maximise space with custom under‑stairs cupboards and drawers.</p>
                 </div>
-                <!-- 9. Structural carpentry -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
                     <h3>Structural Carpentry</h3>
                     <p>Roofs, joists, stud walls, and all structural timber work.</p>
                 </div>
-                <!-- 10. Media units -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-tv"></i></div>
                     <h3>Media Units</h3>
                     <p>Integrated media walls with storage and fireplace options.</p>
                 </div>
-                <!-- 11. Garden fences and decking -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-tree"></i></div>
                     <h3>Garden Fences & Decking</h3>
                     <p>Quality timber fencing, decking, and garden structures.</p>
                 </div>
-                <!-- 12. Wall panelling -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-th"></i></div>
                     <h3>Wall Panelling</h3>
                     <p>Decorative wall panelling, shaker style, and feature walls.</p>
                 </div>
-                <!-- 13. UPVC Windows -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-window-maximize"></i></div>
                     <h3>UPVC Windows</h3>
                     <p>Supply and fitting of high‑quality UPVC windows.</p>
                 </div>
-                <!-- 14. Garden rooms -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-seedling"></i></div>
                     <h3>Garden Rooms</h3>
                     <p>Custom garden offices, studios, and retreats.</p>
                 </div>
-                <!-- 15. Joists -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-grip-lines"></i></div>
                     <h3>Joists</h3>
                     <p>Floor and ceiling joists, installation and repair.</p>
                 </div>
-                <!-- 16. Gazebos -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
                     <h3>Gazebos</h3>
                     <p>Timber gazebos and pergolas for your outdoor space.</p>
                 </div>
-                <!-- 17. Flat roofs -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-home"></i></div>
                     <h3>Flat Roofs</h3>
                     <p>Flat roof carpentry, felt, and GRP installations.</p>
                 </div>
-                <!-- 18. Stud walls -->
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-border-all"></i></div>
                     <h3>Stud Walls</h3>
@@ -947,59 +1099,31 @@
         </div>
     </section>
 
-    <!-- Projects / Photo Gallery -->
+    <!-- ============================================ -->
+    <!-- PROJECTS SECTION - ALL PHOTOS IN ONE PLACE   -->
+    <!-- ============================================ -->
     <section class="section" id="projects">
         <div class="container">
             <div class="section-title">
-                <h2>Recent Projects</h2>
-                <p>A glimpse of our work</p>
+                <h2><i class="fas fa-images" style="color: var(--accent-wood);"></i> Our Projects</h2>
+                <p>Browse all our work in one place</p>
             </div>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <div class="image-wrapper">
-                        <img src="https://images4.imagebam.com/c0/f8/58/ME1BF707_o.JPG" alt="Project 1">
-                        <div class="project-overlay">View Project</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Kitchen</h3>
-                        <p>Hand‑crafted shaker style kitchen in white.</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="image-wrapper">
-                        <img src="https://images4.imagebam.com/2e/72/a7/ME1BF705_o.JPG" alt="Project 2">
-                        <div class="project-overlay">View Project</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Staircase Refurb</h3>
-                        <p>Victorian staircase with new spindles and handrail.</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="image-wrapper">
-                        <img src="https://images4.imagebam.com/95/1e/23/ME1BF704_o.JPG" alt="Project 3">
-                        <div class="project-overlay">View Project</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Bi‑fold Doors</h3>
-                        <p>Custom made bi‑folds leading to garden.</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="image-wrapper">
-                        <img src="https://images4.imagebam.com/46/ab/5c/ME1BF706_o.JPG" alt="Project 4">
-                        <div class="project-overlay">View Project</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Built‑in Wardrobes</h3>
-                        <p>Fitted bedroom wardrobes with soft‑close drawers.</p>
-                    </div>
-                </div>
+            
+            <!-- All Projects Grid -->
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded by JavaScript -->
+            </div>
+
+            <!-- View All Button -->
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <button class="btn" onclick="openGallery()" style="font-size: 1.1rem; padding: 1rem 3rem;">
+                    <i class="fas fa-expand"></i> VIEW FULL GALLERY
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials with Real Checkatrade Data -->
+    <!-- Testimonials -->
     <section class="section">
         <div class="container">
             <div class="section-title">
@@ -1007,7 +1131,6 @@
                 <p>Real feedback from Checkatrade</p>
             </div>
 
-            <!-- Real Checkatrade Rating Box -->
             <div class="rating-box">
                 <div class="big-rating">9.89 / 10</div>
                 <div class="stars">
@@ -1018,7 +1141,6 @@
             </div>
 
             <div class="testimonials-grid">
-                <!-- Review Card 1 -->
                 <div class="testimonial-card">
                     <div class="stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -1036,12 +1158,11 @@
                     </div>
                 </div>
 
-                <!-- Review Card 2 -->
                 <div class="testimonial-card">
                     <div class="stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p>"We’re extremely happy with our new media wall built. From start to finish, the work was professional, tidy, and completed to a very high standard. He paid great attention to detail, made sure everything was level and neatly finished, and took the time to ensure the TV, fireplace, and electrics were positioned perfectly. The end result has completely transformed the room. Communication was excellent throughout, and the job was finished on time and within budget. I would highly recommend him to anyone looking for quality workmanship"</p>
+                    <p>"We're extremely happy with our new media wall built. From start to finish, the work was professional, tidy, and completed to a very high standard. He paid great attention to detail, made sure everything was level and neatly finished, and took the time to ensure the TV, fireplace, and electrics were positioned perfectly. The end result has completely transformed the room."</p>
                     <div class="testimonial-author">
                         <div>
                             <h5>Yuliya</h5>
@@ -1103,8 +1224,8 @@
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Let’s work together</h3>
-                    <p>Whether you have a specific project in mind or just want to discuss ideas, we’re here to help.</p>
+                    <h3>Let's work together</h3>
+                    <p>Whether you have a specific project in mind or just want to discuss ideas, we're here to help.</p>
                     <div class="contact-detail">
                         <i class="fas fa-phone-alt"></i>
                         <span>+447413437908</span>
@@ -1140,6 +1261,29 @@
     </section>
 </main>
 
+<!-- ============================================ -->
+<!-- FULL GALLERY OVERLAY                         -->
+<!-- ============================================ -->
+<div class="gallery-overlay" id="galleryOverlay">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h2><i class="fas fa-images"></i> All Projects</h2>
+            <button class="gallery-close" onclick="closeGallery()">&times;</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items loaded by JavaScript -->
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-prev" onclick="changeImage(-1)">&#10094;</button>
+    <img id="lightboxImage" src="" alt="Project Image">
+    <button class="lightbox-next" onclick="changeImage(1)">&#10095;</button>
+</div>
+
 <footer>
     <div class="container">
         <div class="social-links">
@@ -1154,29 +1298,168 @@
     </div>
 </footer>
 
-<!-- JavaScript for mobile menu, smooth scroll, scroll to top -->
+<!-- JavaScript -->
 <script>
-    // Mobile menu toggle
+    // ==============================================
+    // ADD YOUR PHOTOS HERE - JUST ADD THE URLs
+    // ==============================================
+    const projectImages = [
+        // === ADD ALL YOUR IMAGES BELOW ===
+        { url: "https://github.com/konstructoltd/konstructoltd.github.io/blob/main/kitchen.JPG", title: "Kitchen Installation" },
+        { url: "https://github.com/konstructoltd/konstructoltd.github.io/blob/main/staircase.JPG", title: "Staircase Refurbishment" },
+        { url: "https://github.com/konstructoltd/konstructoltd.github.io/blob/main/bifold%20door.JPG", title: "Bi-fold Doors" },
+        { url: "https://github.com/konstructoltd/konstructoltd.github.io/blob/main/fitted%20wardrobe.JPG", title: "Built-in Wardrobes" },
+        { url: "https://github.com/konstructoltd/konstructoltd.github.io/blob/main/wardrobe%201.JPG", title: "Custom Joinery" },
+        
+        // === ADD MORE IMAGES HERE ===
+        // { url: "your-image-5.jpg", title: "Project Name" },
+        // { url: "your-image-6.jpg", title: "Project Name" },
+        // { url: "your-image-7.jpg", title: "Project Name" },
+        // ... add as many as you want!
+    ];
+
+    // ==============================================
+    // RENDER PROJECTS ON THE MAIN PAGE
+    // ==============================================
+    function renderProjects() {
+        const grid = document.getElementById('projectsGrid');
+        grid.innerHTML = '';
+        
+        // Show all images (or first 8 if you want to limit)
+        const imagesToShow = projectImages; // Shows ALL images
+        // const imagesToShow = projectImages.slice(0, 8); // Uncomment to show only first 8
+        
+        imagesToShow.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'project-item';
+            div.onclick = () => openLightbox(index);
+            div.innerHTML = `
+                <div class="image-wrapper">
+                    <img src="${item.url}" alt="${item.title}" loading="lazy">
+                </div>
+                <div class="project-info">
+                    <h3>${item.title}</h3>
+                    <p>Click to view</p>
+                </div>
+            `;
+            grid.appendChild(div);
+        });
+
+        // Show message if no images
+        if (projectImages.length === 0) {
+            grid.innerHTML = `
+                <div style="text-align: center; padding: 4rem; grid-column: 1 / -1; background: var(--card-white); border-radius: 20px;">
+                    <i class="fas fa-upload" style="font-size: 3rem; color: var(--text-muted);"></i>
+                    <p style="margin-top: 1rem; color: var(--text-muted);">Add your images to the <strong>projectImages</strong> array in the JavaScript.</p>
+                </div>
+            `;
+        }
+    }
+
+    // ==============================================
+    // GALLERY OVERLAY FUNCTIONS
+    // ==============================================
+    function openGallery() {
+        const overlay = document.getElementById('galleryOverlay');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        renderGallery();
+    }
+
+    function closeGallery() {
+        const overlay = document.getElementById('galleryOverlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function renderGallery() {
+        const grid = document.getElementById('galleryGrid');
+        grid.innerHTML = '';
+        
+        if (projectImages.length === 0) {
+            grid.innerHTML = `
+                <div style="text-align: center; color: white; padding: 4rem; grid-column: 1 / -1;">
+                    <i class="fas fa-upload" style="font-size: 3rem; opacity: 0.5;"></i>
+                    <p style="margin-top: 1rem; font-size: 1.2rem;">No images added yet.</p>
+                    <p style="opacity: 0.6;">Add your images to the <strong>projectImages</strong> array.</p>
+                </div>
+            `;
+            return;
+        }
+
+        projectImages.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            div.innerHTML = `
+                <img src="${item.url}" alt="${item.title}" loading="lazy">
+                <div class="gallery-label">
+                    <h4>${item.title}</h4>
+                </div>
+            `;
+            div.onclick = () => openLightbox(index);
+            grid.appendChild(div);
+        });
+    }
+
+    // ==============================================
+    // LIGHTBOX FUNCTIONS
+    // ==============================================
+    let currentImageIndex = 0;
+
+    function openLightbox(index) {
+        currentImageIndex = index;
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightboxImage');
+        img.src = projectImages[index].url;
+        img.alt = projectImages[index].title;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function changeImage(direction) {
+        if (projectImages.length === 0) return;
+        currentImageIndex = (currentImageIndex + direction + projectImages.length) % projectImages.length;
+        const img = document.getElementById('lightboxImage');
+        img.src = projectImages[currentImageIndex].url;
+        img.alt = projectImages[currentImageIndex].title;
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+            closeGallery();
+        }
+        if (e.key === 'ArrowLeft') changeImage(-1);
+        if (e.key === 'ArrowRight') changeImage(1);
+    });
+
+    // ==============================================
+    // MOBILE MENU & SCROLL
+    // ==============================================
     const menuToggle = document.getElementById('mobileMenu');
     const navLinks = document.getElementById('navLinks');
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('show');
     });
 
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
-                // Close mobile menu if open
                 navLinks.classList.remove('show');
             }
         });
     });
 
-    // Scroll to top button
     const scrollTopBtn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
@@ -1188,6 +1471,11 @@
     scrollTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // ==============================================
+    // INIT - Load projects on page load
+    // ==============================================
+    document.addEventListener('DOMContentLoaded', renderProjects);
 </script>
 
 </body>
