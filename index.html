@@ -22,6 +22,8 @@
             --primary-gradient: linear-gradient(135deg, #1a3a6b 0%, #2a5a9a 50%, #3a7aba 100%);
             --accent: #4a8fc5;
             --accent-light: #6ab0e0;
+            --accent-wood: #c4956a;
+            --accent-wood-light: #d4a87a;
             --glass-bg: rgba(255, 255, 255, 0.08);
             --glass-border: rgba(255, 255, 255, 0.15);
             --bg-dark: #080e1a;
@@ -60,11 +62,11 @@
             background: var(--bg-dark);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-light);
+            background: var(--accent-wood);
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent);
+            background: var(--accent-wood-light);
         }
 
         /* ===== UTILITY ===== */
@@ -90,8 +92,8 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--accent);
-            background: rgba(74, 143, 197, 0.12);
+            color: var(--accent-wood);
+            background: rgba(196, 149, 106, 0.12);
             padding: 0.4rem 1.2rem;
             border-radius: 50px;
             margin-bottom: 0.8rem;
@@ -113,7 +115,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: var(--primary-gradient);
+            background: var(--accent-wood);
             border-radius: 2px;
         }
 
@@ -182,7 +184,9 @@
             box-shadow: 0 8px 32px rgba(26, 58, 107, 0.3);
         }
 
-        /* ===== HEADER ===== */
+        /* ============================================ */
+        /* ===== HEADER - Option 4: Glass + Wood ===== */
+        /* ============================================ */
         header {
             position: fixed;
             top: 0;
@@ -191,14 +195,18 @@
             z-index: 1000;
             padding: 0.6rem 0;
             transition: var(--transition);
-            background: rgba(255,255,255,0.85);
+            background: rgba(255, 255, 255, 0.78);
             backdrop-filter: blur(20px) saturate(1.4);
-            border-bottom: 1px solid rgba(26, 58, 107, 0.06);
+            -webkit-backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 3px solid var(--accent-wood);
         }
 
         header.scrolled {
-            background: rgba(255,255,255,0.92);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            -webkit-backdrop-filter: blur(20px) saturate(1.4);
             box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+            border-bottom-color: rgba(196, 149, 106, 0.5);
         }
 
         nav {
@@ -210,7 +218,6 @@
             padding: 0 2rem;
         }
 
-        /* ===== LOGO - RESPONSIVE ===== */
         .logo-link {
             display: flex;
             align-items: center;
@@ -226,7 +233,10 @@
             object-fit: contain;
         }
 
-        /* Logo text fallback (if image doesn't load) */
+        .logo-img:hover {
+            transform: scale(1.02);
+        }
+
         .logo-text {
             display: none;
             font-size: 1.5rem;
@@ -236,11 +246,7 @@
         }
 
         .logo-text span {
-            color: var(--accent);
-        }
-
-        .logo-img:hover {
-            transform: scale(1.02);
+            color: var(--accent-wood);
         }
 
         .nav-links {
@@ -265,7 +271,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-gradient);
+            background: var(--accent-wood);
             transition: var(--transition);
         }
 
@@ -280,6 +286,11 @@
         .nav-links .btn {
             padding: 0.6rem 1.6rem;
             font-size: 0.85rem;
+            background: var(--primary-gradient);
+        }
+
+        .nav-links .btn:hover {
+            transform: translateY(-2px);
         }
 
         .menu-toggle {
@@ -582,7 +593,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: var(--primary-gradient);
+            background: var(--accent-wood);
             opacity: 0;
             transition: var(--transition);
         }
@@ -647,7 +658,7 @@
         }
 
         #why-choose .section-title h2::after {
-            background: var(--accent-light);
+            background: var(--accent-wood);
         }
 
         #why-choose .section-title p {
@@ -679,7 +690,7 @@
 
         .feature i {
             font-size: 2.5rem;
-            color: var(--accent-light);
+            color: var(--accent-wood-light);
             margin-bottom: 1.2rem;
         }
 
@@ -986,7 +997,7 @@
         }
 
         #contact .section-title h2::after {
-            background: var(--accent-light);
+            background: var(--accent-wood);
         }
 
         #contact .section-title p {
@@ -1028,7 +1039,7 @@
 
         .contact-detail i {
             font-size: 1.3rem;
-            color: var(--accent-light);
+            color: var(--accent-wood-light);
             width: 2rem;
         }
 
@@ -1061,9 +1072,9 @@
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--accent-wood);
             background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 0 4px rgba(74, 143, 197, 0.1);
+            box-shadow: 0 0 0 4px rgba(196, 149, 106, 0.1);
         }
 
         .contact-form textarea {
@@ -1082,7 +1093,7 @@
             padding: 3rem 0 2rem;
             text-align: center;
             background: var(--bg-dark);
-            border-top: 1px solid rgba(255,255,255,0.04);
+            border-top: 2px solid rgba(196, 149, 106, 0.15);
         }
 
         footer .social-links {
@@ -1100,7 +1111,7 @@
         }
 
         footer .social-links a:hover {
-            color: var(--accent-light);
+            color: var(--accent-wood-light);
             transform: translateY(-3px);
         }
 
@@ -1121,7 +1132,7 @@
         footer .checkatrade-footer-link:hover {
             background: rgba(255,255,255,0.05);
             color: #fff;
-            border-color: rgba(255,255,255,0.15);
+            border-color: rgba(196, 149, 106, 0.3);
         }
 
         footer p {
@@ -1169,7 +1180,7 @@
         }
 
         .gallery-header h2 i {
-            color: var(--accent-light);
+            color: var(--accent-wood-light);
             margin-right: 0.6rem;
         }
 
@@ -1307,10 +1318,9 @@
         }
 
         /* ============================================ */
-        /* ===== RESPONSIVE - LOGO FIX ===== */
+        /* ===== RESPONSIVE ===== */
         /* ============================================ */
 
-        /* Tablets & Small Laptops */
         @media (max-width: 992px) {
             .hero .container {
                 grid-template-columns: 1fr;
@@ -1363,30 +1373,26 @@
             }
         }
 
-        /* ===== MOBILE (PHONES) - LOGO FIX HERE ===== */
         @media (max-width: 768px) {
-            /* --- Header & Navigation --- */
-            nav {
-                padding: 0 1.2rem;
-                min-height: 60px;
+            /* Header mobile */
+            header {
+                background: rgba(255, 255, 255, 0.92);
+                border-bottom-width: 2px;
+                padding: 0.4rem 0;
             }
 
-            /* 🔥 LOGO - Smaller & Properly Sized on Mobile */
+            header.scrolled {
+                background: rgba(255, 255, 255, 0.95);
+            }
+
+            nav {
+                padding: 0 1.2rem;
+                min-height: 56px;
+            }
+
             .logo-img {
                 height: 50px;
                 max-height: 50px;
-                width: auto;
-                object-fit: contain;
-            }
-
-            /* Show text logo if image fails */
-            .logo-img[src=""],
-            .logo-img:not([src]) {
-                display: none;
-            }
-            .logo-img[src=""] + .logo-text,
-            .logo-img:not([src]) + .logo-text {
-                display: block;
             }
 
             .nav-links {
@@ -1400,7 +1406,7 @@
                 backdrop-filter: blur(20px);
                 padding: 1.5rem 2rem;
                 box-shadow: var(--shadow-lg);
-                border-top: 1px solid rgba(26, 58, 107, 0.06);
+                border-top: 2px solid var(--accent-wood);
                 gap: 1.2rem;
                 align-items: center;
             }
@@ -1430,7 +1436,7 @@
                 padding-bottom: 70px;
             }
 
-            /* --- Hero --- */
+            /* Hero */
             .hero {
                 padding-top: 70px;
                 min-height: auto;
@@ -1453,7 +1459,7 @@
                 font-size: 2.5rem;
             }
 
-            /* --- Sections --- */
+            /* Sections */
             .section {
                 padding: 3.5rem 0;
             }
@@ -1588,7 +1594,6 @@
                 right: 1rem;
             }
 
-            /* --- Footer --- */
             footer .social-links {
                 gap: 1.2rem;
             }
@@ -1603,16 +1608,18 @@
             }
         }
 
-        /* ===== SMALL PHONES ===== */
         @media (max-width: 480px) {
             .container {
                 padding: 0 1rem;
             }
 
-            /* Logo even smaller on very small screens */
             .logo-img {
                 height: 42px;
                 max-height: 42px;
+            }
+
+            header {
+                border-bottom-width: 2px;
             }
 
             .hero-content h1 {
@@ -1867,7 +1874,7 @@
         <div class="container">
             <div class="section-title">
                 <span class="label">Our Portfolio</span>
-                <h2><i class="fas fa-images" style="color: var(--accent); margin-right: 0.4rem;"></i> Our Projects</h2>
+                <h2><i class="fas fa-images" style="color: var(--accent-wood); margin-right: 0.4rem;"></i> Our Projects</h2>
                 <p>Browse all our work in one place</p>
             </div>
             <div class="projects-grid" id="projectsGrid">
@@ -1891,7 +1898,7 @@
             </div>
 
             <div class="rating-box">
-                <div class="big-rating">9.89 / 10</div>
+                <div class="big-rating">9.92 / 10</div>
                 <div class="stars">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
@@ -2057,6 +2064,29 @@
         { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/kitchen.JPG", title: "Kitchen" },
         { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/staircase.JPG", title: "Staircase" },
         { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/wardrobe%201.JPG", title: "Bespoke Furniture" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/cladding01.jpg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/cladding02.jpg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/cladding03.jpeg"}, title: "Cladding" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/desk.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/door01.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/door02.jpeg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/door03.jpeg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/kitchen01.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/kitchen02.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/media%20wall01.jpeg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/sliding%20door%20wardrobe01.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/sliding%20door%20wardrobe02.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/under%20stair%20wardrobe.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe01.jpeg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe02.jpeg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe03.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe04.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe04.jpeg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe05.jpeg"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe06.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe07.JPG"}, title: "Carpentry" },
+        { url: "https://raw.githubusercontent.com/konstructoltd/konstructoltd.github.io/main/images/wardrobe08.jpg"}, title: "Carpentry" },
+        
     ];
 
     // ===== RENDER PROJECTS =====
